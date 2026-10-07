@@ -1,0 +1,1111 @@
+/* ==========================================================================
+   Aura Music — App Catalog & APK Download Portal Stylesheet
+   Design: Modern App Store / APK Hub with AMOLED Dark Theme & Cyan/Violet Accents
+   ========================================================================== */
+
+:root {
+  /* Color Tokens */
+  --bg-main: #090B10;
+  --bg-card: #111520;
+  --bg-card-subtle: #161C2A;
+  --bg-card-hover: #1C2436;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(56, 189, 248, 0.4);
+  --border-card: rgba(131, 199, 255, 0.12);
+
+  /* Brand Accents */
+  --accent-cyan: #38BDF8;
+  --accent-cyan-hover: #0EA5E9;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.25);
+  --accent-violet: #A78BFA;
+  --accent-emerald: #10B981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+  --accent-amber: #F59E0B;
+  --accent-pink: #F472B6;
+
+  /* Typography */
+  --text-main: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* Sizing & Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, #111A2E 0%, var(--bg-main) 45%, #05070A 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ==========================================================================
+   Catalog Header & Search
+   ========================================================================== */
+.catalog-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9, 11, 16, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.75rem 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand-hub {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-main);
+  flex-shrink: 0;
+}
+
+.hub-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.hub-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hub-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Search Box in Header */
+.hub-search-box {
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.hub-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1rem 0.55rem 2.4rem;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.hub-search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 16px var(--accent-cyan-glow);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.btn-hub-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--accent-emerald-glow);
+  transition: all var(--transition-fast);
+}
+
+.btn-hub-download:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+}
+
+/* Category Chips Bar */
+.category-chips-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.6rem 0;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.category-chips-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-item {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.chip-item:hover, .chip-item.active {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* ==========================================================================
+   App Catalog Product Hero Section
+   ========================================================================== */
+.product-hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 2.25rem 1.85rem;
+  margin: 1.75rem 0 2rem;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(167, 139, 250, 0.06) 50%, transparent 80%);
+  pointer-events: none;
+}
+
+.product-hero-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.app-icon-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+}
+
+.app-icon-img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  border: 3px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-cyan-glow);
+}
+
+.verified-badge-overlay {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: #10B981;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.product-meta-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.meta-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.badge-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-pill.verified {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-pill.category {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.badge-pill.adfree {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.app-main-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.app-developer-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.app-developer-text span.dev-name {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* Key Metrics Box */
+.metrics-strip {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.metric-val .star {
+  color: #FBBF24;
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Action Download Buttons */
+.hero-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.btn-primary-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 24px var(--accent-emerald-glow);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.45);
+}
+
+.btn-catalog-versions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 0.95rem 1.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-catalog-versions:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: var(--accent-cyan);
+}
+
+.btn-qr-scan {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-qr-scan:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Screenshots Catalog / Gallery
+   ========================================================================== */
+.catalog-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.section-catalog-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-catalog-title svg {
+  color: var(--accent-cyan);
+}
+
+.screenshots-scroll-container {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
+}
+
+.screenshot-card {
+  flex: 0 0 230px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.screenshot-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.screenshot-display {
+  height: 380px;
+  background: #080A0F;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.screenshot-top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.screenshot-content-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.screen-art-preview {
+  width: 140px;
+  height: 140px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-cyan-glow);
+  margin-bottom: 1rem;
+}
+
+.screen-caption {
+  padding: 0.85rem 1rem;
+  background: var(--bg-card-subtle);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.screen-caption h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.screen-caption p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Catalog Sticky Tabs
+   ========================================================================== */
+.catalog-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.catalog-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.catalog-tab-btn:hover {
+  color: var(--text-main);
+}
+
+.catalog-tab-btn.active {
+  color: var(--accent-cyan);
+}
+
+.catalog-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-cyan);
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 0 12px var(--accent-cyan);
+}
+
+/* ==========================================================================
+   Download Versions Catalog (Archive / Releases Table)
+   ========================================================================== */
+.version-catalog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.version-item {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.version-item:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: var(--bg-card-hover);
+}
+
+.version-item.latest {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.version-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.version-name-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.version-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.version-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.version-badge.stable {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.version-badge.archived {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.version-meta-pills {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.version-action-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-version-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--accent-cyan);
+  color: #050810;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-version-dl:hover {
+  background: var(--accent-cyan-hover);
+  transform: translateY(-1px);
+}
+
+.btn-version-hash {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-version-hash:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.version-changelog-list {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.version-changelog-list ul {
+  padding-left: 1.25rem;
+}
+
+/* ==========================================================================
+   Technical Specifications & Permissions
+   ========================================================================== */
+.specs-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.specs-grid-table {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+}
+
+.specs-cell {
+  background: var(--bg-card);
+  padding: 1.25rem 1.5rem;
+}
+
+.spec-cell-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.35rem;
+}
+
+.spec-cell-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.spec-cell-desc {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 0.2rem;
+}
+
+/* Permissions List */
+.permissions-container {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.permissions-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.perm-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.76rem;
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Installation Guide Steps
+   ========================================================================== */
+.install-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.install-step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.install-step-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.45rem;
+}
+
+.install-step-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Interactive Download Modal / Drawer
+   ========================================================================== */
+.catalog-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.catalog-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.catalog-modal-box {
+  width: 100%;
+  max-width: 500px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-cyan-glow);
+  position: relative;
+  transform: scale(0.95) translateY(15px);
+  transition: transform var(--transition-smooth);
+}
+
+.catalog-modal-overlay.active .catalog-modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-icon-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+.modal-product-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-product-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+}
+
+.modal-product-title h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.modal-product-title p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Download Simulation Progress Box */
+.download-progress-container {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.85rem 0 0.5rem;
+}
+
+.progress-fill-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+  border-radius: 4px;
+  transition: width 0.1s linear;
+}
+
+.progress-status-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.btn-trigger-dl {
+  width: 100%;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #FFFFFF;
+  border: none;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 15px var(--accent-emerald-glow);
+  transition: all var(--transition-fast);
+  margin-bottom: 1rem;
+}
+
+.btn-trigger-dl:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+}
+
+/* QR Code Display Modal */
+.qr-modal-content {
+  text-align: center;
+}
+
+.qr-box-visual {
+  width: 180px;
+  height: 180px;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  margin: 1.25rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+.qr-box-visual svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Toast */
+.catalog-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-cyan);
+  color: #FFFFFF;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-cyan-glow);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 3000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.catalog-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Footer */
+.catalog-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+  background: #06080C;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.footer-inner-catalog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 900px) {
+  .specs-grid-table {
+    grid-template-columns: 1fr;
+  }
+
+  .install-guide-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .product-hero-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .meta-tags-row {
+    justify-content: center;
+  }
+
+  .metrics-strip {
+    justify-content: center;
+  }
+
+  .hero-action-buttons {
+    justify-content: center;
+  }
+
+  .install-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-search-box {
+    display: none;
+  }
+}
